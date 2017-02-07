@@ -5,10 +5,23 @@ class Router
 
     protected $routes = [];
 
+    /**
+     * Getting all the routes that defined and updating the routes property
+     * @param $routes
+     */
     public function define($routes)
     {
         $this->routes = $routes;
     }
+
+
+    public static function load($file)
+    {
+        $router = new static;
+        require $file;
+        return $router;
+    }
+
 
     public function direct($uri)
     {

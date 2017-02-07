@@ -1,5 +1,5 @@
 <?php
-$articles = $query->selectAll('articals');
+$articles = $app['database']->selectAll('articals');
 
 
-require 'index.view.php';
+require 'views/index.view.php';
