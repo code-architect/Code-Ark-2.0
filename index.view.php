@@ -8,7 +8,7 @@
         <?php foreach($articles as $article): ?>
 
         <h1><?= $article->title; ?></h1>
-            <email style="background-color: aquamarine"><?= $article->email; ?></email>
+            <b>Posted By: </b> <email style="background-color: aquamarine"><?= $article->email; ?></email>
             <p><?= $article->content; ?></p>
 
         <?php endforeach; ?>
