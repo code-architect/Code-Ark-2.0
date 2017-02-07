@@ -3,10 +3,16 @@
 class Connection
 {
 
-    public static function make()
+    public static function make($config)
     {
         try {
-            return new PDO('mysql:host=localhost;dbname=test_sub_project', 'root', '');
+
+            return new PDO(
+                $config['connection'].';dbname='.$config['dbname'],
+                $config['username'],
+                $config['password'],
+                $config['options']
+            );
         }
         catch (PDOException $e) {
             die( self::showPdoError($e));
