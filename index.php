@@ -1,16 +1,16 @@
 <?php
 
 require 'database/Connection.php';
+require 'database/QueryBuilder.php';
 include 'functions.php';
 require 'Task.php';
 
 $pdo = Connection::make();
 
 
-$statement = $pdo->prepare('select * from articals');
+$query = new QueryBuilder($pdo);
 
-$statement->execute();
-$articles = $statement->fetchAll(PDO::FETCH_CLASS, 'Task');
+$articles = $query->selectAll('articals');
 
 
 
