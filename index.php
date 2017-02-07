@@ -1,11 +1,13 @@
 <?php
 
-$query = require 'bootstrap.php';
-
-require 'Task.php';
+$query = require 'core/bootstrap.php';
 
 
-$articles = $query->selectAll('articals');
+$router = new Router();
+
+require 'routes.php';
 
 
-require 'index.view.php';
+$path = trim($_SERVER['REQUEST_URI'], '/');
+
+require $router->direct($path);
