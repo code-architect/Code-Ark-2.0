@@ -6,7 +6,9 @@
 
     <form class="form-inline" method="POST" action="/names">
 
-        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="name" >
+        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="title" placeholder="title" >
+        <input type="email" class="form-control mb-2 mr-sm-2 mb-sm-0" name="email" placeholder="email" >
+        <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" name="content" placeholder="content" >
 
         <input type="submit" class="btn btn-primary" name="submit"/>
 
