@@ -1,15 +1,10 @@
 <?php
 
-$app = [];
-
-$app['config'] = require 'config.php';
-
-//require 'core/router.php';
-//require 'core/Request.php';
-//require 'core/database/Connection.php';
-//require 'core/database/QueryBuilder.php';
+// take thing config, store it inside the container and label it as 'config'
+App::bind('config', require 'config.php');
 
 
-$app['database'] = new QueryBuilder(
-                        Connection::make($app['config']['database'])
-                   );
+
+App::bind('database', new QueryBuilder(
+                        Connection::make( App::get('config')['database'])
+                   ));
