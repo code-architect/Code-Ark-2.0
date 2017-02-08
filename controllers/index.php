@@ -1,4 +1,5 @@
 <?php
+
 $articles = $app['database']->selectAll('articals');
 
 
