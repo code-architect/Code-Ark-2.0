@@ -3,15 +3,34 @@
 class Router
 {
 
-    protected $routes = [];
+    protected $routes = [
+        'GET'   =>  [],
+        'POST'  =>  []
+    ];
 
     /**
      * Getting all the routes that defined and updating the routes property
      * @param $routes
      */
-    public function define($routes)
+
+    /**
+     * For Get requests
+     * @param $uri
+     * @param $controller
+     */
+    public function get($uri, $controller)
     {
-        $this->routes = $routes;
+        $this->routes['GET'][$uri] = $controller;
+    }
+
+    /**
+     * For Post requests
+     * @param $uri
+     * @param $controller
+     */
+    public function post($uri, $controller)
+    {
+        $this->routes['POST'][$uri] = $controller;
     }
 
 
@@ -23,11 +42,11 @@ class Router
     }
 
 
-    public function direct($uri)
+    public function direct($uri, $requestType)
     {
-        if(array_key_exists($uri, $this->routes))
+        if(array_key_exists($uri, $this->routes[$requestType]))
         {
-            return $this->routes[$uri];
+            return $this->routes[$requestType][$uri];
         }
 
         throw new Exception('No Routes Defined');
