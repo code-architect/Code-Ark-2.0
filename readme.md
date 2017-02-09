@@ -1,4 +1,4 @@
-# Documentation of Code-Ark 2.0
+# Code-Ark 2.0
 ![Code-Ark by codearchitect.in](code-ark.png)
 
 ## _**Features**_
@@ -46,6 +46,10 @@
 
 
 ## **Configure** 
+
+The Code-Ark 2.0 is here!!! I have added and removed few features from the application. It's now more MVC base. It's now suitable
+  for any small scale to medium scale projects.
+
 Change the config.php to attach your database details. Thats the only change you have to do. I have an example application 
  for learning purposes, modify it or remove it entirely, it's up to you. This framework follows the basic MVC-R (Model, View, Controller, Router)
  structure. And also it's very easy to understand.
