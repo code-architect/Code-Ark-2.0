@@ -48,7 +48,10 @@
                     <a href="about">About</a>
                 </li>
                 <li>
-                    <a href="about/culture">About-Culture</a>
+                    <a href="blog">blog</a>
+                </li>
+                <li>
+                    <a href="doit">Do It</a>
                 </li>
                 <li>
                     <a href="contact">Contact</a>

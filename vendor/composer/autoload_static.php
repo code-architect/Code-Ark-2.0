@@ -8,6 +8,7 @@ class ComposerStaticInit8bf1daf39cda4b59845cfa9c7405bca1
 {
     public static $classMap = array (
         'App' => __DIR__ . '/../..' . '/core/App.php',
+        'BlogController' => __DIR__ . '/../..' . '/controllers/BlogController.php',
         'ComposerAutoloaderInit8bf1daf39cda4b59845cfa9c7405bca1' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInit8bf1daf39cda4b59845cfa9c7405bca1' => __DIR__ . '/..' . '/composer/autoload_static.php',
