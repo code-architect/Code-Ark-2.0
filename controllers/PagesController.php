@@ -7,17 +7,19 @@ class PagesController
     {
         $articles = App::get('database')->selectAll('articals');
 
-        require 'views/index.view.php';
+        return view('index',[
+            'articles' =>  $articles
+        ]);
     }
 
     public function about()
     {
-        require 'views/about.view.php';
+        return view('about');
     }
 
     public function contact()
     {
-        require 'views/about.view.php';
+        return view('contact');
     }
     
 }
