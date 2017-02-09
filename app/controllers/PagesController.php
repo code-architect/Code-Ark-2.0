@@ -1,15 +1,14 @@
 <?php
 
+namespace App\Controllers;
+
+
 class PagesController
 {
 
     public function home()
     {
-        $articles = App::get('database')->selectAll('articals');
-
-        return view('index',[
-            'articles' =>  $articles
-        ]);
+        return view('index');
     }
 
     public function about()
