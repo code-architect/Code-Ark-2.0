@@ -18,6 +18,9 @@
 * <span style="color:red">Custom 404 and 500 error message display page for production level</span> 
 <br/><br/>
 
+* <span style="color:blue">Namespaces</span>.
+<br/><br/>
+
 * PDO Database connection
 <br/><br/>
 
