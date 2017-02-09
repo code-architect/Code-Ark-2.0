@@ -27,7 +27,8 @@
 * Pretty URLs
 <br/><br/>
 
-* PSR-1 Coding standards 
+* <span style="color:red">PSR-1 Coding standards</span> <br/>
+  <span style="color:blue">PSR-2 Coding standards</span>.
 <br/><br/>
 
 * Exception Handler and Error Handler <span style="color:blue">Throwing Exceptions</span>.
@@ -45,10 +46,13 @@
 
 
 ## **Configure** 
-bla bla
+Change the config.php to attach your database details. Thats the only change you have to do. I have an example application 
+ for learning purposes, modify it or remove it entirely, it's up to you. This framework follows the basic MVC-R (Model, View, Controller, Router)
+ structure. And also it's very easy to understand.
 
 ## **Router**
-In the routes file declare the routes like <code>$router->get('about', 'PagesController@about');</code><br/>.
+In the routes file declare the routes like <code>$router->get('about', 'PagesController@about');</code><br/> or <br/> 
+<code>$router->post('about', 'PagesController@about');</code><br/>
 Name of the route is __'about'__, the controller's name is __PagesController__, and the method responsible is __'about'__ method.<br/>
 You must separate the controller and the method using __'@'__. <br/><br/>
   
@@ -91,7 +95,7 @@ If you want to change this style, navigate to bootstrap.php and change the view 
 function view($name, $data)<br>
 {<br>
     &nbsp;&nbsp;&nbsp;&nbsp;extract($data);<br>
-    &nbsp;&nbsp;&nbsp;&nbsp;return require "views/{$name}.view.php";<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;return require "app/views/{$name}.view.php";<br>
 }
 </code></pre>
 
@@ -101,16 +105,15 @@ function view($name, $data)<br>
 
 ## **Models**
 
- Cache database connection
- 
- Change Database information in the App/Config.php file. 
+  Change Database information in the __config.php__ file. 
 
 ## **Exception Handler**
 
-Converting errors into exception and then handling them, exceptions have the added benefit of having a __stack trace__, 
-which is helpful when debugging.
- 
- Change the __const SHOW_ERRORS__ in the config.php to toggle between development and user mode.
+In the __config.php__ file, the optional error mode has been declared as <code>PDO::ATTR_ERRMODE   =>   PDO::ERRMODE_EXCEPTION</code><br/>
+You can change it and can also catch the error to show a 404 page or 400 page error.
+
+In the core/database/Connection.php, you will find a PDO error display method showPdoError(), out of the box.<br/>
+
  
 ------------------------------------------------------------------------------------------------------------------------
  
