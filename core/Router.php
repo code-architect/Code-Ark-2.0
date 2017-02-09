@@ -46,10 +46,27 @@ class Router
     {
         if(array_key_exists($uri, $this->routes[$requestType]))
         {
-            return $this->routes[$requestType][$uri];
+            //die($this->routes[$requestType][$uri]);
+            //explode('@', $this->routes[$requestType][$uri]);
+            return $this->callAction(
+                ...explode('@', $this->routes[$requestType][$uri])
+            );
         }
 
         throw new Exception('No Routes Defined');
     }
+
+
+    protected function callAction($controller, $action)
+    {
+        //check if the method exists or not
+        if(!method_exists($controller, $action))
+        {
+            throw new Exception("No {$action} method exists in {$controller}");
+        }
+        return (new $controller)->$action();
+    }
+
+
 
 }
