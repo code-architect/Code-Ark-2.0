@@ -27,16 +27,13 @@
 * PSR-1 Coding standards 
 <br/><br/>
 
-* Autoload Classes using composer
-<br/><br/>
-
-* Action Filters
-<br/><br/>
-
-* Exception Handler and Error Handler
+* Exception Handler and Error Handler <span style="color:blue">Throwing Exceptions</span>.
 <br/><br/>
   
 * Development and Production Mode
+<br/><br/>
+
+* <span style="color:green">Autoload Classes using composer</span>
 <br/><br/>
 
 * <span style="color:green">Registering Routes specifically for GET request and Post Request </span>
@@ -45,111 +42,59 @@
 
 
 ## **Configure** 
-Configure the root of the web server. Go to apache configuration section, then go to localhost virtual host settings and change the __DocumentRoot__ directive
-__"{path}/www"__ to __"{path}/www/public"__ <br>
-attaching the image of framework folder structure
-  ![Code-Ark by codearchitect.in](framework_ark.png)
+bla bla
 
-To have the public folder as the web root we need to configure the web server so the root is not the current root, but is
-the public folder.
-Go to Apache configuration, and find "Localhost VirtualHost" settings, and change the DocumentRoot directive.
-
-or use the .htaccess file just change the __"RewriteBase /Your-project/"__ to your project directory name.
-
-## **Pretty or Vanity URLs**
- To get pretty url just change the __"RewriteBase /sand_box/code_ark/"__ of .htaccess in public folder to your root directory.
- 
-## **Controller and Action**
-Words separated in the URL by __hyphens__. <br> 
-Controller classes are named using __StudlyCaps__ (PSR-1 coding standard)<br>
-Action methods are named using __camelCase__ <br>
-
+## **Router**
+In the routes file declare the routes like <code>$router->get('about', 'PagesController@about');</code><br/>.
+Name of the route is __'about'__, the controller's name is __PagesController__, and the method responsible is __'about'__ method.<br/>
+You must separate the controller and the method using __'@'__. <br/><br/>
+  
 ************************************************************************************************************************<br>
+### __Composer and Dependency__
+Run the __composer dump-autoload__ command to reload any new file. Can use this to add any needed dependency.<br/>
 
-Add a suffix to the method name, we need specify that any actions added to controllers will need to have this suffix <br> <br>
+ To add any __dependency injection__ use this code in the __bootstrap.php__ file to access it from anywhere in the application.
+    <pre><code>     
+        App::bind('config', require 'config.php');<br><br>
+        App::bind('database', new QueryBuilder(<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;        Connection::make( App::get('config')['database'])<br>
+        ));
+    </code></pre>
+ Here on the first line we are binding the dependency. In the bind(), __'config'__ is the label we are giving. Same goes 
+ for the next line __database__ is just a label, and next we are creating a new QueryBuilder.<br/>
+ 
+ In the __controllers__ directory, inside the PagesController you will see,
+ <pre><code>
+  public function home()<br>
+     {<br>
+         $articles = App::get('database')->selectAll('articals');<br> 
+         return view('index');<br>
+     }
+ </code></pre>
+ 
+ In here we are getting the dependency so we can use it {I know the spelling is wrong, it was intended}. The __App::get__ 
+ will get the dependency according to the label.
+ 
+ 
+ 
+************************************************************************************************************************<br>
+## **Views**
+
+Your view files are located in the views folder, and css and js files are located in to public folder.
+The view files must follow a naming pattern. <code>index.view.php</code><br><br>
+
+If you want to change this style, navigate to bootstrap.php and change the view helper function
 <pre><code>
-class Posts<br>
+function view($name, $data)<br>
 {<br>
-    public function indexAction()<br>
-    {<br>
-        // show all posts<br>
-    }<br>
-    public function showAction()<br>
-    {<br>
-            // show all posts<br>
-    }<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;extract($data);<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;return require "views/{$name}.view.php";<br>
 }
 </code></pre>
 
 
-if we return false from the __before__ method from the implemented class, it won't execute the originally called method
- and this is useful for example for checking to see if the user had logged in or had the correct permission. 
- It's very useful for things like authentication. 
- 
- <pre><code>
- protected function before()<br>
-     {<br>
-         echo "(before)";<br>
-         return false;<br>
-     }
- </code></pre>
-  
-************************************************************************************************************************<br>
-### __Organized  controllers in subdirectories: Routes with namespace__
-* __Option__ to specify the __namespace__ in the route
-* Defaults to __APP\Controllers__ if not specified, but we can specify it if we want and have what ever namespace
-<br>
-  for example: 
-  <pre><code>
-  $router->add(<br>
-  'admin/{controller}/{action}',<br>
-   ['namespace' => 'Admin']<br>
-   );
-  </code></pre>
 
-Showing the same thing in the router table, 
-adding the __Admin__ subdirectory in the __Controllers__ directory under __App__ root directory
-
-<pre><code>
-$router->add('', ['controller' => 'Home', 'action' => 'index']);
-$router->add('{controller}/{action}');
-$router->add('{controller}/{id:\d+}/{action}');
-
-// adding the Admin subdirectory in the Controllers directory under App root directory
-$router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
-</code></pre>
-
-## **Views**
-
-Have two kinds of rendering options 
-
-* PHP rendering
-<pre><code> 
-View::render('Posts/index.php')
-</code></pre>
-
-* Twig template rendering
-<pre><code> 
-View::render('Posts/index.html')
-</code></pre>
-Views have output escaping __Using Twig template engine.__
-
-__Passing data to the view in PHP__
-             <pre><code> 
-               $arr = ['12', '13', '14'];<br>
-               $arr2 = ['ok', 'see', 'you'];<br>
-               $arr3 = ['name'=>'skull', 'home'=>'earth'];<br>
-               View::render('Home/index.php',['name' => 'Architect',<br>
-               'city' => [$arr, $arr2, $arr3]]);
-             </code></pre>
-
-__Passing data to the view in Twig__
-<pre><code> 
-  $arr = ['12', '13', '14'];<br>
-  $arr2 = ['ok', 'see', 'you'];<br>
-  $arr3 = ['name'=>'skull', 'home'=>'earth'];<br>
-  View::renderTemplate('Home/index.html', ['name' => 'Architect','numbers'=>$arr, $arr2, 'details'=>$arr3]);
-</code></pre>
+    
 
 ## **Models**
 
