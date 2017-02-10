@@ -2,47 +2,32 @@
 ![Code-Ark by codearchitect.in](code-ark.png)
 
 ## _**Features**_
-#### The Removed Features are in <span style="color:red">red</span><br/> Replaced features are in <span style="color:blue">blue</span><br/> New features are in <span style="color:green">green</span>
+* __Removed__: Added Twig template and Twig rendered views <br/>
+  __Added__: There is a composer.json file so any templating engine can be added,don't have to depend on twig anymore. 
 
-* <span style="color:red"> Added Twig template and Twig rendered views </span><br/>
-  <span style="color:blue"> There is a composer.json file so any templating engine can be added,don't have to depend on twig anymore. </span>
-<br/><br/>
+* __Removed__: Error Log<br/>
+ __Added__: Now we throwing exception. You can catch that exception and generate a dedicated class to show errors in your way. 
+      
+* __Removed__: HTTP status code based Error
 
-* <span style="color:red">Error Log</span><br/>
-  <span style="color:blue"> Now we throwing exception. You can catch that exception and generate a dedicated class to show errors in your way. </span>
-  <br/><br/>
-  
-* <span style="color:red">HTTP status code based Error</span>
-<br/><br/>
-  
-* <span style="color:red">Custom 404 and 500 error message display page for production level</span> 
-<br/><br/>
+* __Removed__: Custom 404 and 500 error message display page for production level
 
-* <span style="color:blue">Namespaces</span>.
-<br/><br/>
+* __Added__: Namespaces.
 
 * PDO Database connection
-<br/><br/>
 
 * Pretty URLs
-<br/><br/>
 
-* <span style="color:red">PSR-1 Coding standards</span> <br/>
-  <span style="color:blue">PSR-2 Coding standards</span>.
-<br/><br/>
+* __Removed__: PSR-1 Coding standards <br/>
+  __Added__: PSR-2 Coding standards
 
 * Exception Handler and Error Handler <span style="color:blue">Throwing Exceptions</span>.
-<br/><br/>
   
 * Development and Production Mode
-<br/><br/>
 
-* <span style="color:green">Autoload Classes using composer</span>
-<br/><br/>
+* __New__: Autoload Classes using composer</span>
 
-* <span style="color:green">Registering Routes specifically for GET request and Post Request </span>
-<br/><br/>
-
+* __New__: Registering Routes specifically for GET request and Post Request
 
 
 ## **Configure** 
