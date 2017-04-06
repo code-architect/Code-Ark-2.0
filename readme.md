@@ -38,6 +38,7 @@ The Code-Ark 2.0 is here!!! I have added and removed few features from the appli
 Change the config.php to attach your database details. Thats the only change you have to do. I have an example application 
  for learning purposes, modify it or remove it entirely, it's up to you. This framework follows the basic MVC-R (Model, View, Controller, Router)
  structure. And also it's very easy to understand.
+ Create a database first the after installation connect the database with config.php
 
 ## **Router**
 In the routes file declare the routes like <code>$router->get('about', 'PagesController@about');</code><br/> or <br/> 
